@@ -1,4 +1,4 @@
-const array = [
+const apiArray = [
 
     fetch('https://opentdb.com/api.php?amount=20&category=9&difficulty=easy&type=multiple'),
     fetch('https://opentdb.com/api.php?amount=20&category=9&difficulty=medium&type=multiple'),
