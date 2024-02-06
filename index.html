@@ -27,19 +27,19 @@
                     <div class="mx-auto">
                         <section class="difficulty bg-primary ">
                             <h2 class="text-2 text-center ">Please choose your Difficulty </h2>
-                            <div class="difficulty green text-center">
+                            <div class="difficulty green text-center" onclick="startQuiz('easy')">
                                 <!-- Icon for the green section -->
                                 <h3>Easy</h3>
                                 <p>Content goes here...</p>
                             </div>
 
-                            <div class="difficulty yellow text-center">
+                            <div class="difficulty yellow text-center" onclick="startQuiz('medium')">
                                 <!-- Icon for the yellow section -->
                                 <h3>Medium</h3>
                                 <p>Content goes here...</p>
                             </div>
 
-                            <div class="difficulty red text-center">
+                            <div class="difficulty red text-center" onclick="startQuiz('hard')">
                                 <!-- Icon for the red section -->
                                 <h3>Hard</h3>
                                 <p>Content goes here...</p>
@@ -50,7 +50,7 @@
             </div>
         </div>
 
-
+        <div class="text-center" id="quiz-content"></div>
 
         <footer class="footer fixed-bottom">
             <div class="social-media">
