@@ -72,7 +72,7 @@ function submitAnswer() {
   } else {
     alert('Quiz finished. You reached the end!');
   }
-}
+  
 // fetchData("easy");
 // fetchData("medium");
 // fetchData("hard");
