@@ -45,3 +45,16 @@ const apiArray = {
   fetchData("easy");
   fetchData("medium");
   fetchData("hard");
+
+
+  //function for score
+   //function startQuiz () {
+    //currentQuestionIndex = 0;
+    //nextButton.innerHTML =" Next" ;
+    //fetchData();
+   //}
+
+  //correct answer incorrect answer function
+
+
+  // new question function
