@@ -17,7 +17,7 @@ const apiArray = {
 let currentQuestionIndex = 0;
 let quizData;
 
-// 
+// fetching difficulty function 
 function fetchData(difficulty) {
   const url = apiArray[difficulty].url;
   fetch(url)
@@ -38,6 +38,7 @@ function fetchData(difficulty) {
     .catch((error) => console.error("Could not fetch quiz data:", error));
 }
 
+// current question function 
 function displayCurrentQuestion() {
   const quizContent = document.getElementById("quiz-content");
   quizContent.innerHTML = ""; // Clear previous contents
@@ -50,23 +51,26 @@ function displayCurrentQuestion() {
   quizContent.innerHTML += '<br><button onclick="submitAnswer()">Submit</button>';
 }
 
+// start quiz function
 function startQuiz(difficulty) {
   fetchData(difficulty);
 }
 
+//submit button 
 function submitAnswer() {
   const selectedAnswer = document.querySelector('input[name="q"]:checked');
   if (!selectedAnswer) {
     alert('Please select an answer before submitting.');
     return;
   }
-  // Add your scoring logic here if needed
+
+
+  // Add scoring here
   currentQuestionIndex++;
   if (currentQuestionIndex < quizData.length) {
     displayCurrentQuestion();
   } else {
     alert('Quiz finished. You reached the end!');
-    // Add any additional logic or actions for when the quiz is complete
   }
 }
 // fetchData("easy");
