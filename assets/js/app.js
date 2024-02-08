@@ -37,22 +37,57 @@ function fetchData(difficulty) {
     .catch((error) => console.error("Could not fetch quiz data:", error));
 }
 
-// current question function 
+// Display current question function (should have broken into more smaller functions)
 function displayCurrentQuestion() {
   const quizContent = document.getElementById("quiz-content");
+  const questionNumber = document.getElementById("question-number");
+
+  // Clear previous contents
   quizContent.innerHTML = "";
-
   const currentQuestion = quizData[currentQuestionIndex];
-  // display the question
-  quizContent.innerHTML += `<h2>${currentQuestion.question}</h2>`;
+  questionNumber.textContent = `Question ${currentQuestionIndex + 1}`;
 
-  // display answer
-  const optionsDiv = document.createElement("div");
-  currentQuestion.incorrect_answers.forEach((incorrectAnswer) => {
-    optionsDiv.innerHTML += `<label><input type="radio" name="q" value="${incorrectAnswer}">${incorrectAnswer}</label>`;
+  // Displays question and answer options
+  const questionContainer = document.createElement('div');
+  const questionParagraph = document.createElement('p');
+  questionParagraph.textContent = currentQuestion.question;
+
+  const optionsList = document.createElement('ul');
+  optionsList.classList.add('options-list');
+
+  // Function to handle answer selection
+  function handleAnswerSelection(answer) {
+    selectAnswer(answer);
+    // Move to the next question (change 500 to slow now clicking)
+    setTimeout(() => {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < quizData.length) {
+        displayCurrentQuestion();
+      } else {
+        endQuiz();
+      }
+    }, 500);
+  }
+
+  currentQuestion.incorrect_answers.forEach(incorrectAnswer => {
+    const optionItem = document.createElement('li');
+    optionItem.textContent = incorrectAnswer;
+    optionItem.addEventListener('click', () => handleAnswerSelection(incorrectAnswer));
+    optionsList.appendChild(optionItem);
   });
-  optionsDiv.innerHTML += `<label><input type="radio" name="q" value="${currentQuestion.correct_answer}">${currentQuestion.correct_answer}</label>`;
-  quizContent.appendChild(optionsDiv);
+
+  const correctAnswerItem = document.createElement('li');
+  correctAnswerItem.textContent = currentQuestion.correct_answer;
+  correctAnswerItem.addEventListener('click', () => {
+    handleAnswerSelection(currentQuestion.correct_answer);
+
+    score++
+    updateScore();
+  });
+  optionsList.appendChild(correctAnswerItem);
+  questionContainer.appendChild(questionParagraph);
+  questionContainer.appendChild(optionsList);
+  quizContent.appendChild(questionContainer);
 }
 
 function showQuestion(data) {
