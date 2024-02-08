@@ -94,7 +94,7 @@ function selectAnswer(selectedAnswer) {
 // start quiz function
 function startQuiz() {
   resetQuiz()
-  const difficulty = document.getElementById('difficulty').ariaValueMax;
+  const difficulty = document.getElementById('difficulty').value;
   fetchData(difficulty);
   //removes difficulty selector from the window once clicked
   document.getElementById('start-section').style.display = 'none';
@@ -116,8 +116,7 @@ function resetQuiz() {
   currentQuestionIndex = 0;
   score = 0;
   updateScore();
-  document.getElementById("question-number").textContent = ""; 
-
+  document.getElementById("question-number").textContent = "";
 }
 
 // fetchData("easy");
