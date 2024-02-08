@@ -89,6 +89,7 @@ function displayCurrentQuestion() {
   questionContainer.appendChild(optionsList);
   quizContent.appendChild(questionContainer);
 }
+//end of display current question function!!!
 
 // Function to handle answer selection - doesnt allow you to continue without this?
 function selectAnswer(selectedAnswer) {
@@ -104,12 +105,10 @@ function startQuiz() {
   document.getElementById('start-section').style.display = 'none';
 }
 
-// Add scoring here
-currentQuestionIndex++;
-if (currentQuestionIndex < quizData.length) {
-  displayCurrentQuestion();
-} else {
-  alert('Quiz finished. You reached the end!');
+// update scoring here
+function updateScore() {
+  const scoreContainer = document.getElementById('score-container');
+  scoreContainer.textContent = `Score: ${score}`;
 }
 
 // fetchData("easy");
