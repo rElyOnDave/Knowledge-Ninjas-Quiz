@@ -104,16 +104,6 @@ function startQuiz(difficulty) {
   fetchData(difficulty);
 }
 
-//submit button 
-function submitAnswer() {
-  const selectedAnswer = document.querySelector('input[name="q"]:checked');
-  if (!selectedAnswer) {
-    alert('Please select an answer before submitting.');
-  } else
-    return;
-}
-
-
 // Add scoring here
 currentQuestionIndex++;
 if (currentQuestionIndex < quizData.length) {
