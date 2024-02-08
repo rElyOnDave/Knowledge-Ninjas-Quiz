@@ -1,32 +1,22 @@
 // api array for quiz questions at all difficulties 
 const apiArray = {
   easy: {
-    url: "https://opentdb.com/api.php?amount=20&category=9&difficulty=easy&type=multiple",
-    image: "www.test.com/image.png",
+    url: "https://opentdb.com/api.php?amount=20&category=9&difficulty=easy&type=multiple"
   },
   medium: {
-    url: "https://opentdb.com/api.php?amount=20&category=9&difficulty=medium&type=multiple",
-    image: "www.test.com/image.png",
+    url: "https://opentdb.com/api.php?amount=20&category=9&difficulty=medium&type=multiple"
   },
   hard: {
-    url: "https://opentdb.com/api.php?amount=20&category=9&difficulty=hard&type=multiple",
-    image: "www.test.com/image.png",
+    url: "https://opentdb.com/api.php?amount=20&category=9&difficulty=hard&type=multiple"
   },
 };
 
+//Variables which change
 let currentQuestionIndex = 0;
 let quizData;
-const correctScoreElement = document.getElementById('correct-score');
-const totalQuestionsElement = document.getElementById('total-questions');
-const questionElement = document.getElementById('Question');
-const answerButtons = document.querySelectorAll('.btn');
-const checkAnswerButton = document.getElementById('check-answer');
-const playAgainButton = document.getElementById('play-again');
-let correctAnswer = "",
-  correctScore = askedCount = 0,
-  totalQuestion = 20;
+let score = 0;
 
-// fetching difficulty function 
+// fetching difficulty function (might need to use async b4 function and try after)
 function fetchData(difficulty) {
   const url = apiArray[difficulty].url;
   fetch(url)
