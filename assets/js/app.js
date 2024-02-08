@@ -111,6 +111,11 @@ function updateScore() {
   scoreContainer.textContent = `Score: ${score}`;
 }
 
+// End Quiz function --- needs changed!!
+function endQuiz() {
+  alert(`Quiz Finsined! Your Final Score was ${score}/${quizData.length}`);
+}
+
 // fetchData("easy");
 // fetchData("medium");
 // fetchData("hard");
