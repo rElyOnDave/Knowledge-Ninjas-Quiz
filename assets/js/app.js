@@ -16,6 +16,15 @@ const apiArray = {
 
 let currentQuestionIndex = 0;
 let quizData;
+const correctScoreElement = document.getElementById('correct-score');
+const totalQuestionsElement = document.getElementById('total-questions');
+const questionElement = document.getElementById('Question');
+const answerButtons = document.querySelectorAll('.btn');
+const checkAnswerButton = document.getElementById('check-answer');
+const playAgainButton = document.getElementById('play-again');
+let correctAnswer = "",
+  correctScore = askedCount = 0,
+  totalQuestion = 20;
 
 // fetching difficulty function 
 function fetchData(difficulty) {
@@ -32,7 +41,7 @@ function fetchData(difficulty) {
     })
     .then((data) => {
       console.log(data);
-      quizData = data.results; 
+      quizData = data.results;
       displayCurrentQuestion();
     })
     .catch((error) => console.error("Could not fetch quiz data:", error));
@@ -41,14 +50,28 @@ function fetchData(difficulty) {
 // current question function 
 function displayCurrentQuestion() {
   const quizContent = document.getElementById("quiz-content");
-  quizContent.innerHTML = ""; // Clear previous contents
-  const currentQuestion = quizData[currentQuestionIndex]; 
-  quizContent.innerHTML += `<div><p>${currentQuestion.question}</p>`;
+  quizContent.innerHTML = "";
+
+  const currentQuestion = quizData[currentQuestionIndex];
+  // display the question
+  quizContent.innerHTML += `<h2>${currentQuestion.question}</h2>`;
+
+  // display answer
+  const optionsDiv = document.createElement("div");
   currentQuestion.incorrect_answers.forEach((incorrectAnswer) => {
-    quizContent.innerHTML += `<label><input type="radio" name="q" value="${incorrectAnswer}">${incorrectAnswer}</label>`;
+    optionsDiv.innerHTML += `<label><input type="radio" name="q" value="${incorrectAnswer}">${incorrectAnswer}</label>`;
   });
-  quizContent.innerHTML += `<label><input type="radio" name="q" value="${currentQuestion.correct_answer}">${currentQuestion.correct_answer}</label></div>`;
-  quizContent.innerHTML += '<br><button onclick="submitAnswer()">Submit</button>';
+  optionsDiv.innerHTML += `<label><input type="radio" name="q" value="${currentQuestion.correct_answer}">${currentQuestion.correct_answer}</label>`;
+  quizContent.appendChild(optionsDiv);
+}
+
+function showQuestion(data) {
+  let correctAnswer = data.correctAnswer;
+  let incorrectAnswers = data.incorrect_answers;
+  let optionList = [...incorrectAnswers]; // Make a copy to avoid modifying original array
+  let randomIndex = Math.floor(Math.random() * (incorrectAnswers.length + 1)); // Generate random index
+  // Insert correct answer at random index
+  optionList.splice(randomIndex, 0, correctAnswer);
 }
 
 // start quiz function
@@ -61,18 +84,19 @@ function submitAnswer() {
   const selectedAnswer = document.querySelector('input[name="q"]:checked');
   if (!selectedAnswer) {
     alert('Please select an answer before submitting.');
+  } else
     return;
-  }
+}
 
 
-  // Add scoring here
-  currentQuestionIndex++;
-  if (currentQuestionIndex < quizData.length) {
-    displayCurrentQuestion();
-  } else {
-    alert('Quiz finished. You reached the end!');
-  }
-  
+// Add scoring here
+currentQuestionIndex++;
+if (currentQuestionIndex < quizData.length) {
+  displayCurrentQuestion();
+} else {
+  alert('Quiz finished. You reached the end!');
+}
+
 // fetchData("easy");
 // fetchData("medium");
 // fetchData("hard");
