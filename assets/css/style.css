@@ -3,8 +3,49 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'roboto', sans-serif;
-   
+    text-align: center;
+    align-items: center;
 
+}
+
+
+
+
+/* Header container */
+
+.header-container {
+    margin-bottom: 20px;
+    position: relative;
+    height: 10%;
+}
+
+
+
+.logo
+    {
+        left: 10px; /* Adjust the left position of the logo */
+        top: 50%; /* Center vertically */
+        transform: translateY(-50%); /* Center vertically */
+        height: auto;
+        margin-left: 5px;
+    }
+
+
+.logor {
+    right: 10px; /* Adjust the right position of the logor */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
+    height: auto;
+    margin-right: 10px;
+}
+
+.logo,
+.logor {
+    width: 50px; /* Adjust the width of the logos as needed */
+    height: auto; /* Maintain aspect ratio */
+    position: absolute; /* Position the logos absolutely within the container */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
 }
 
 .difficulty {
@@ -16,7 +57,7 @@
     font-weight: bold;
      */
 
-    background-color: white;
+    background-color: rgba(59, 58, 134, 0.089);
     max-width: 70%;
     margin: 100px auto 0;
     border-radius: 10px;
@@ -62,18 +103,24 @@
 }
 
 /* Footer */
+
+footer {
+
+}
 #social-networks {
     text-align: center;
     padding: 20px 0;
     display: flex;
     justify-content: space-evenly;
     list-style-type: none;
+    color: #ffffff;
+   
 }
 
 #social-networks i {
     font-size: 160%;
     padding: 5%;
-    color: #3a3a3a;
+    color: #ffffff;
 }
 
 /* Add hover effect to change background color to grey */
@@ -93,11 +140,30 @@
     align-items: center;
     
 }
-.quiz
-{ padding: 20px 0;}
+.quiz { 
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    font-size: 20px;
+    align-items: center;
+    width: auto;
+}
+
+/*Reset button*/
+.reset{
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: right;
+    float: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
 .btn {
-    background: white;
     color: black;
     font-weight: 500;
     width: 100%;

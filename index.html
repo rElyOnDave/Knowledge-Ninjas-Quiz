@@ -11,21 +11,42 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <style>
+         body {
+          background-image: url('assets/images/background1.jpg');
+         /* Scale the background image to cover the entire container */
+      background-repeat: no-repeat;
+      min-height: 90vh;
+      position: relative;
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        }
+      </style>
 </head>
 
 <body>
 
-    <body>
-
         
         <!-- TITLE, SCORE HERE -->
-        <div class="container" id="quiz-container">
+        <div class="header-container">
+            <!-- Logo Before -->
+            <img src="assets/images/logo.png" alt="Logo" class="logo">
             <h1 class="mb-4 text-center">Knowledge Ninjas Quiz</h1>
+            <!-- Logo After -->
+            <img src="assets/images/logor.png" alt="Logor" class="logor">
+        </div>
+        <!-- Rest of the header -->
             <div class="d-flex justify-content-between align-items-center">
                 <div id="question-number"></div>
                 <div id="score-container">Score: <span id="score">0</span> </div>
             </div>
-
+<section>
+    <div class="reset">
+        <a href="index.html">
+            <i class="fa-solid fa-arrow-rotate-left">Start Again</i>
+        </a>
+    </div> 
+</section>
+            
 
             <!-- DIFFICULTY SELECTOR HERE W/ START BUTTON-->
             <div id="start-section" class="text-center">
