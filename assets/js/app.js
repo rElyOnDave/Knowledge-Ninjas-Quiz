@@ -90,18 +90,18 @@ function displayCurrentQuestion() {
   quizContent.appendChild(questionContainer);
 }
 
-function showQuestion(data) {
-  let correctAnswer = data.correctAnswer;
-  let incorrectAnswers = data.incorrect_answers;
-  let optionList = [...incorrectAnswers]; // Make a copy to avoid modifying original array
-  let randomIndex = Math.floor(Math.random() * (incorrectAnswers.length + 1)); // Generate random index
-  // Insert correct answer at random index
-  optionList.splice(randomIndex, 0, correctAnswer);
+// Function to handle answer selection - doesnt allow you to continue without this?
+function selectAnswer(selectedAnswer) {
+  console.log(`Selected answer: ${selectedAnswer}`);
 }
 
 // start quiz function
-function startQuiz(difficulty) {
+function startQuiz() {
+  restetQuiz()
+  const difficulty = document.getElementById('difficulty').ariaValueMax;
   fetchData(difficulty);
+  //removes difficulty selector from the window once clicked
+  document.getElementById('start-section').style.display = 'none';
 }
 
 // Add scoring here
