@@ -17,24 +17,19 @@ let quizData;
 let score = 0;
 
 // fetching difficulty function (might need to use async b4 function and try after)
-function fetchData(difficulty) {
-  const url = apiArray[difficulty].url;
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      } else if (response.status === 429) {
-        console.log("You've made too many requests in a short period.");
-        return;
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      quizData = data.results;
-      displayCurrentQuestion();
-    })
-    .catch((error) => console.error("Could not fetch quiz data:", error));
+async function fetchData(difficulty) {
+  try {
+    const url = apiArray[difficulty].url;
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    quizData = data.results;
+    displayCurrentQuestion();
+  } catch (error) {
+    console.error("Could not fetch quiz data:", error);
+  }
 }
 
 // Display current question function (should have broken into more smaller functions)
@@ -98,7 +93,7 @@ function selectAnswer(selectedAnswer) {
 
 // start quiz function
 function startQuiz() {
-  restetQuiz()
+  resetQuiz()
   const difficulty = document.getElementById('difficulty').ariaValueMax;
   fetchData(difficulty);
   //removes difficulty selector from the window once clicked
@@ -114,6 +109,15 @@ function updateScore() {
 // End Quiz function --- needs changed!!
 function endQuiz() {
   alert(`Quiz Finsined! Your Final Score was ${score}/${quizData.length}`);
+}
+
+// Reset Quiz Function
+function resetQuiz() {
+  currentQuestionIndex = 0;
+  score = 0;
+  updateScore();
+  document.getElementById("question-number").textContent = ""; 
+
 }
 
 // fetchData("easy");
