@@ -16,35 +16,39 @@
 .header-container {
     margin-bottom: 20px;
     position: relative;
-    height: 10%;
+    height: 20%;
+    font-size: 5vh;
 }
 
-
+.mb-4text-center{
+    font-size: 5vh;
+}
 
 .logo
     {
-        left: 10px; /* Adjust the left position of the logo */
+        left: 23%; /* Adjust the left position of the logo */
         top: 50%; /* Center vertically */
         transform: translateY(-50%); /* Center vertically */
-        height: auto;
+        height: calc(2 * auto);
         margin-left: 5px;
+        position: center;
     }
 
 
 .logor {
-    right: 10px; /* Adjust the right position of the logor */
-    top: 50%; /* Center vertically */
+    right: 22.5%; /* Adjust the right position of the logor */
+    top: 80%; /* Center vertically */
     transform: translateY(-50%); /* Center vertically */
-    height: auto;
+    height: calc(2 * auto);
     margin-right: 10px;
 }
 
 .logo,
 .logor {
-    width: 50px; /* Adjust the width of the logos as needed */
+    width: 130px; /* Adjust the width of the logos as needed */
     height: auto; /* Maintain aspect ratio */
     position: absolute; /* Position the logos absolutely within the container */
-    top: 50%; /* Center vertically */
+    top: 76%; /* Center vertically */
     transform: translateY(-50%); /* Center vertically */
 }
 
@@ -68,19 +72,19 @@
 
 /* Green Section */
 .difficulty.green {
-    background-color: #72efe9;
+    background-color: #72efe921;
     color: #111111;
 }
 
 /* Yellow Section */
 .difficulty.yellow {
-    background-color: #ffe066;
+    background-color: #ffe06625;
     color: #111111;
 }
 
 /* Red Section */
 .difficulty.red {
-    background-color: #ff6961;
+    background-color: #ff696128;
     color: #111111;
 }
  
@@ -104,8 +108,18 @@
 
 /* Footer */
 
-footer {
+.text-3text-center {
+    font-size: 3vh;
+    font-weight: bold;
+    color: #ffffff;
+}
 
+footer {
+    background-image: url(../assets/images/background2.jpg);
+    background-color: #04f0e40c;
+   /* background-blend-mode: multiply; */
+    background-size: cover;
+    background-position: center;
 }
 #social-networks {
     text-align: center;
@@ -114,7 +128,7 @@ footer {
     justify-content: space-evenly;
     list-style-type: none;
     color: #ffffff;
-   
+ font-size: 30px;
 }
 
 #social-networks i {
@@ -199,3 +213,36 @@ footer {
     height:50px;
     
    }
+
+
+/* Media query for screens smaller than 768px */
+
+/* Media query for screens larger than 768px */
+
+
+/* */
+   /* Background *
+.background {
+    background-image: url('../assets/images/background1.jpg');
+    background-position: auto center;
+}
+
+/* Media query for screens smaller than 768px *
+@media screen and (max-width: 768px) {
+ .background {
+        background-image: url('../assets/images/background2.jpg');
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat;
+    }
+}
+
+/* Media query for screens larger than 768px *
+@media screen and (min-width: 769px) {
+.background {
+        background-image: url('../assets/images/background3.jpg');
+        background-size: cover; 
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+} 
